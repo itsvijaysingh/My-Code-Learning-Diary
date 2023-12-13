@@ -1,7 +1,7 @@
-// Write a program that read marks of four subjects and print their total.
+// Write a program that read marks of four subjects and print their AVERAGE.
 
 void main(){
-    int english, hindi, maths, science, total;
+    int english, hindi, maths, science, average;
     printf("Enter Your English Subject Marks: ");
     scanf("%d",&english);
 
@@ -14,7 +14,7 @@ void main(){
     printf("Enter Your Science Subject Marks: ");
     scanf("%d",&science);
 
-    total=english+hindi+maths+science;
+   average=english+hindi+maths+science/4;
 
-    printf("Your Total Marks is: %d",total);
+    printf("Your Total Marks Average is: %d",average);
 }

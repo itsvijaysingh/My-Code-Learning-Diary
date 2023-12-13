@@ -1,9 +1,14 @@
-//Write a program that show following output –
-//Star %d Infotech 1 College, Ajmer (print % as it is as shown and also print 1 using %d)
+//Write a program that read two numbers and print their addition, subtraction, multiplication, division and modulus.
 
-#include<stdio.h>
-    void main(){
-        int num=1;
-        printf("Star %%d InfoTech %d College, Ajmer", num);
+void main(){
+    int num1, num2;
+    printf("Enter Two Numbers (Seprated By Space): ");
+    scanf("%d%d",&num1,&num2);
+
+    printf("Addition: %d",num1+num2);
+    printf("\nSubstraction: %d",num1-num2);
+    printf("\nMultiplication: %d",num1*num2);
+    printf("Division: %d",num1/num2);
+    printf("Modulus: %d",num1%num2);
+
 }
-

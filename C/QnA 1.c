@@ -1,6 +1,13 @@
-// Write a program that show following output – Star Infotech College, Ajmer
+//Write a program that swaping two numbers with third variable.
 
-#include<stdio.h>
-    void main(){
-        printf("Star InfoTech College, Ajmer");
+void main(){
+    int a, b, c;
+    printf("Enter two numbers: ");
+    scanf("%d%d",&a,&b);
+
+    c=a;
+    a=b;
+    b=c;
+
+    printf("After swaping A is %d and B is %d.",a,b);
 }
