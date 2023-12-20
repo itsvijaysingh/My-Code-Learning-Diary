@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2d Arary student Sheet</title>
+</head>
+<body>
+    <p style="text-align: center;">Create a 2D array in <b>JS</b> to store details for 5 students, including serial number, roll number, name, and marks in math, Hindi, and English. Use JavaScript to display all student details in an HTML table, presenting additional information such as total marks, percentage, grade, and result.</p>
+    <hr>
+
+    <script> 
+        var arr = [];
+        
+        var i;
+        var j;
+        var stuCount=1;
+
+        var dataOfHowMany = parseInt(prompt("How many student data you want to fetch?"));
+    
+        for(i=0;i<dataOfHowMany;i++){
+            var studentData = [];
+            var maths, hindi, english, totalMarks=0, percentage=0, grade, result;
+                studentData.push(parseInt(prompt(`Enter Student ${stuCount}'s SR. No ⬇️`)));
+                studentData.push(parseInt(prompt(`Now Enter Student ${stuCount}'s Your Roll. No ⬇️`)));
+                studentData.push(prompt(`Now Enter Student ${stuCount}'s Name ⬇️`));
+
+                maths = parseInt(prompt(`Now Enter Student ${stuCount}'s Maths Marks ⬇️`));
+                maths = maths >= 0 && maths <= 100 ? maths : 0;
+
+                hindi = parseInt(prompt(`Now Enter Student ${stuCount}'s Hindi Marks ⬇️`));
+                hindi  = hindi  >= 0 && hindi  <= 100 ? hindi  : 0;
+
+                english = parseInt(prompt(`Now Enter Student ${stuCount}'s English Marks ⬇️`));
+                english = english >= 0 && english <= 100 ? english : 0;
+
+                totalMarks+=maths+hindi+english;
+                percentage=totalMarks/300*100;
+                grade = (percentage >= 75) ? 'A' : (percentage >= 60) ? 'B' : (percentage >= 50) ? 'C' : (percentage >= 35) ? 'D' : 'E';
+                result = (grade === 'E') ? 'Fail' : 'Pass';
+
+            studentData.push(maths, hindi, english, totalMarks, percentage, grade, result)
+            arr.push(studentData);
+            stuCount++;
+        }
+
+        console.log(arr)
+
+        document.write("<table border=2px cellpadding=10 align=center style='margin-top: 6%;'>");
+            document.write("<thead><th colspan=10>Student Details</th></thead>");
+            document.write("<thead>");
+                document.write("<th>Sr. No.</th>");
+                document.write("<th>Roll No</th>");
+                document.write("<th>Student Name</th>");
+                document.write("<th>Math Marks</th>");
+                document.write("<th>Hindi Marks</th>");
+                document.write("<th>English Marks</th>");
+                document.write("<th>Total Marks (#/300)</th>");
+                document.write("<th>Percentage</th>");
+                document.write("<th>Grade</th>");
+                document.write("<th>Result</th>");
+            document.write("</thead>");
+
+
+            for(i=0;i<arr.length;i++){
+                document.write("<tr>");
+                    for(j=0;j<arr[i].length;j++){
+                        document.write("<td>" + arr[i][j] + "</td>");
+                    }
+                document.write("</tr>");
+            }
+
+
+        document.write("</table>");
+
+    </script>
+</body>
+</html>
