@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modals in Bootstrap</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body>
+    <h1 class="text-center text-bg-dark p-2">Modals</h1>
+    <div class="container-fluid">
+        <div class="button-group">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#simpleModal">
+                Open Simple Modal
+            </button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#simpleModal">
+                Open Faded Modal
+            </button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#noBackdropModal">
+                Open no Backdropped Modal
+            </button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scrollableModal">
+                Open Scrollable Modal
+            </button>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="modal" id="simpleModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="h5">Just Another Simplest Modal</h3>
+                        <button class="btn-close" data-bs-dismiss="modal">
+
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sunt incidunt omnis voluptatem mollitia explicabo magni, sed quibusdam. Culpa dolores quasi dignissimos amet, enim facilis iste ad voluptas quidem non?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="fadeModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="h5">Just Another Fade Modal</h3>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sunt incidunt omnis voluptatem mollitia explicabo magni, sed quibusdam. Culpa dolores quasi dignissimos amet, enim facilis iste ad voluptas quidem non?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="noBackdropModal" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="h3">Just an no backdrop closable Modal!</h2>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                        </h3>
+                    </div>
+                    <div class="modal-body">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias repudiandae sequi aperiam, asperiores tempore accusantium voluptas id ut? Rem inventore ab debitis vel odio assumenda nihil voluptate eligendi ut quas.
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" data-bs-target="#noBackdropModal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="scrollableModal">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="h5">Just Another Scrollable Modal</h3>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore sunt incidunt omnis voluptatem mollitia explicabo magni, sed quibusdam. Culpa dolores quasi dignissimos amet, enim facilis iste ad voluptas quidem non?</p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus, possimus fuga iure debitis sequi consequuntur soluta inventore magni quaerat nihil temporibus consectetur earum non dicta suscipit. Optio, natus. Non, perspiciatis?</p>
+                        <div class="" style="height: 600px;"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="bootstrap.min.js"></script>
+</body>
+</html>
