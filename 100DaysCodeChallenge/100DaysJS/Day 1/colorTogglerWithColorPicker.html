@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Document Color Changer with Color Picker (Input)</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: #c0ffee;
+        }
+        .color-picker-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #colorPicker {
+            margin-left: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="color-picker-container">
+        <h1 style="text-align: center;">Choose Color & See Magic</h1>
+        <input type="color" id="colorPicker" name="color" value="#c0ffee" oninput="colorChange()">         
+    </div>
+
+    <script>
+        let colorPicker = document.getElementById("colorPicker");
+        console.log(colorPicker);
+        function colorChange() {
+            document.body.style.backgroundColor = colorPicker.value;
+        }
+    </script>
+</body>
+</html>
