@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Fees Calculator with Check Boxes</title>
+    <style>
+        body {
+            color: whitesmoke;
+            background-color: black;
+            height: 100vh;
+            border: 2px dotted #c0ffee;
+            border-radius: 4px;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        .input-container {
+            margin: auto;
+        }
+
+        .info-container {
+            margin: auto;
+        }
+        table{
+            border: 2px dotted #c0ffee;
+        }
+        table td{
+            padding: 10px;
+            border: 1px solid whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <div class="input-container">
+            <form>
+                <label><input type="checkbox" name="php" value="7000" onclick="feeCalculator()"> Php</label>
+                <label><input type="checkbox" name="java" value="5000"  onclick="feeCalculator()"> Java</label>
+                <label><input type="checkbox" name="python" value="7000"  onclick="feeCalculator()"> Python</label>
+                <label><input type="checkbox" name="c" value="7000"  onclick="feeCalculator()"> C</label>
+                <label><input type="checkbox" name="cplus" value="5000"  onclick="feeCalculator()"> C++</label>
+            </form>
+        </div>
+        <div class="info-container">
+            <table id="feeTable"></table>
+        </div>
+    </section>
+
+    <script>
+        function feeCalculator() {
+            var infoContainer = document.querySelector(".info-container");
+            var feeTable = document.createElement("table");
+            var phpCheckbox = document.querySelector('input[type="checkbox"][name="php"]');
+            var javaCheckbox = document.querySelector('input[type="checkbox"][name="java"]');
+            var pythonCheckbox = document.querySelector('input[type="checkbox"][name="python"]');
+            var cCheckbox = document.querySelector('input[type="checkbox"][name="c"]');
+            var cplusCheckbox = document.querySelector('input[type="checkbox"][name="cplus"]');
+
+            var totalFee = 0;
+            if (phpCheckbox.checked) {
+                feeTable.innerHTML += `<tr><td>Php</td><td>${phpCheckbox.value}</td></tr>`;
+                totalFee += Number(phpCheckbox.value);
+            }
+            if (javaCheckbox.checked) {
+                feeTable.innerHTML += `<tr><td>Java</td><td>${javaCheckbox.value}</td></tr>`;
+                totalFee += Number(javaCheckbox.value);
+            }
+            if (pythonCheckbox.checked) {
+                feeTable.innerHTML += `<tr><td>Python</td><td>${pythonCheckbox.value}</td></tr>`;
+                totalFee += Number(pythonCheckbox.value);
+            }
+            if (cCheckbox.checked) {
+                feeTable.innerHTML += `<tr><td>C</td><td>${cCheckbox.value}</td></tr>`;
+                totalFee += Number(cCheckbox.value);
+            }
+            if (cplusCheckbox.checked) {
+                feeTable.innerHTML += `<tr><td>C++</td><td>${cplusCheckbox.value}</td></tr>`;
+                totalFee += Number(cplusCheckbox.value);
+            }
+
+            console.log(totalFee);
+            feeTable.innerHTML += `<tr><td><b>Total</b></td><td><b>${totalFee}</b></td></tr>`;
+            infoContainer.innerHTML = '';
+            infoContainer.appendChild(feeTable);
+        }
+    </script>
+</body>
+</html>
