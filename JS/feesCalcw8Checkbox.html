@@ -47,7 +47,6 @@
             </form>
         </div>
         <div class="info-container">
-            <table id="feeTable"></table>
         </div>
     </section>
 
@@ -82,11 +81,14 @@
                 feeTable.innerHTML += `<tr><td>C++</td><td>${cplusCheckbox.value}</td></tr>`;
                 totalFee += Number(cplusCheckbox.value);
             }
-
             console.log(totalFee);
-            feeTable.innerHTML += `<tr><td><b>Total</b></td><td><b>${totalFee}</b></td></tr>`;
-            infoContainer.innerHTML = '';
-            infoContainer.appendChild(feeTable);
+            if(totalFee>0){
+                feeTable.innerHTML += `<tr><td><b>Total</b></td><td><b>${totalFee}</b></td></tr>`;
+                infoContainer.innerHTML = '';
+                infoContainer.appendChild(feeTable);
+            }else{
+                infoContainer.innerHTML = '';
+            }
         }
     </script>
 </body>
