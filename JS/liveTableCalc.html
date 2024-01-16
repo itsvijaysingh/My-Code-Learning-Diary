@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Table Input Calculation</title>
+    <style>
+        body {
+            color: whitesmoke;
+            background-color: black;
+            height: 100vh;
+            border: 2px dotted #c0ffee;
+            border-radius: 4px;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        table {
+            width: 30%;
+            margin: auto;
+            border: 2px solid #c0ffee;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <table cellpadding="5"  border="2px">
+            <tr>
+                <th>Sr No.</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+            <tr class="firstProduct">
+                <td>1</td>
+                <td><input type="text" class="name" value="" placeholder="Enter Product Name" onchange="calculate()" ></td>
+                <td><input type="number" class="quantity" value="" placeholder="Enter Quantity" onchange="calculate()"></td>
+                <td>
+                    <select id="firstSelect" onchange="calculate()">
+                        <option disabled selected value="0">-- Select Price (P/P) --</option>
+                        <option value="1000" class="price" name="price">1000</option>
+                        <option value="2000" class="price" name="price">2000</option>
+                        <option value="3000" class="price" name="price">3000</option>
+                        <option value="4000" class="price" name="price">4000</option>
+                        <option value="5000" class="price" name="price">5000</option>
+                    </select>
+                </td>
+                <td class="singleTotal"></td>
+            </tr>
+            <tr><td colspan="4">Grand Total</td><td class="grandTotal"></td></tr>
+        </table>
+    </section>
+    <script>
+        function calculate() {
+            var productTable = document.getElementsByTagName("table")[0];
+            //console.log(productTable);
+            var grandTotalContainer = productTable.querySelector(".grandTotal");
+           //console.log(grandTotalContainer);
+            var grandTotal = 0;
+
+            var firstProduct = document.getElementsByClassName("firstProduct")[0];
+            //console.log(firstProduct);
+            var firstProductName = document.getElementsByClassName("firstProduct")[0].getElementsByClassName("name")[0].value;
+            console.log("First Product Name: " + firstProductName);
+            var firstProductQuantity = document.getElementsByClassName("firstProduct")[0].getElementsByClassName("quantity")[0].value;
+            console.log("First Product Quantity: " + firstProductQuantity)
+            var firstProductPriceSelector = document.getElementById("firstSelect");
+            //console.log("Selected Index: " + firstProductPriceSelector.selectedIndex); // Return the selected option index(0...1...)
+            var firstProductPrice = firstProductPriceSelector.value;
+            console.log("First Product Price(PER): " + firstProductPrice);
+            var firstProductTotalContainer = firstProduct.querySelector(".singleTotal");
+            //console.log(firstProductTotalContainer);
+
+            if (firstProduct && firstProductName && firstProductQuantity && firstProductPriceSelector.selectedIndex > 0) {
+                var firstProductTotal = firstProductQuantity * firstProductPrice;
+                console.log("First Product Total: " + firstProductTotal);
+                firstProductTotalContainer.innerText = firstProductTotal;
+                grandTotal += firstProductTotal;
+            }
+
+            if (grandTotal > 0) {
+                console.log("Grand Total: " + grandTotal);
+                grandTotalContainer.innerText = grandTotal;
+            }  
+        }
+    </script>
+</body>
+</html>
