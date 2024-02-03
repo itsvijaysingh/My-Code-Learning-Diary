@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innerText vs textContent</title>
+</head>
+<body>
+    <p>
+        some paragraph text
+        <style>
+          p {
+            color: red;
+          }
+        </style>
+        <span>red</span>
+    </p>
+
+    <script>
+        let innerText = document.querySelector('p').innerText;
+        let textContent = document.querySelector('p').textContent;
+        console.log("innerText: " + innerText);
+        console.log("textContent " + textContent);
+    </script>
+</body>
+</html>

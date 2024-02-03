@@ -5,24 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Validations</title>
     <style>
-        .container{
+        body {
+            background: black;
+            color: white;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+
+        .container {
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 100%;
+            height: 100vh;
         }
-        .col{
+
+        .col {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin: auto;
             width: 50%;
         }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input{
+            padding: 8px 5px 10px 8px;
+        }
+
+        .notify {
+            font-size: 15px;
+            margin-right: 10px;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .red {
+            color: red;
+        }
+
+        button{
+            display: block;
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <div class="col">
             <form id="testForm" onsubmit="return validatedForm()">
-                <label>
-                    Name: <input type="text" name="userName" value="">
-                </label>
+                <label for="userName">Name: <input type="text" id="userName" name="userName" value=""></label>
                 <button>Submit</button>
             </form>
         </div>
@@ -31,40 +69,14 @@
     <script>
         function validatedForm(){
             let form = document.getElementById('testForm');
-            let userNameValue = form.userName.value;
-            console.log("userName Value: " + userNameValue);
-            
-            /*if(userNameValue !== ""){
-                alert("Success!");
+            let userNameValue = form.userName.value;            
+            if(userNameValue !== ""){
                 return true;
             } else {
-                alert("Failed!");
+                form.getElementsByTagName('label')[0].innerHTML+='<span class="notify red">Name can not be empty.</span>';
                 return false;
-            }*/
-
-           /* if(userNameValue.trim().length > 0){ // trim the starting and ending white spaces and then check string length
-                alert("Success");
-                return true;
-            }else{
-                alert("Failed");
-                return true;
-            } */
-
-            /*if(userNameValue.length > 0){
-                alert("Success");
-                return true;
-            }else{
-                alert("Failed");
-                return true;
-            }*/
-
-            if(!userNameValue){
-                alert("Failed!");
-                return false;
-            } else {
-                alert("Success!");
-                return true;
             }
+
         }
     </script>    
 </body>

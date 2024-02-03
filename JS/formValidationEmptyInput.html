@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validations</title>
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .col{
+            margin: auto;
+            width: 50%;
+        }
+
+        label{
+            position: relative;
+        }
+
+        .notify{
+            position: absolute;
+            top: 0;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            font-size: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="col">
+            <form id="testForm" onsubmit="return validatedForm()">
+                <label for="userName">Name: <input type="text" id="userName" name="userName" value=""></label>
+                <button>Submit</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function validatedForm(){
+            let form = document.getElementById('testForm');
+            let userNameValue = form.userName.value;
+            console.log("userName Value: " + userNameValue);
+            
+            /*if(userNameValue !== ""){
+                alert("Success!");
+                return true;
+            } else {
+                alert("Failed!");
+                return false;
+            }*/
+
+           /* if(userNameValue.trim().length > 0){ // trim the starting and ending white spaces and then check string length
+                alert("Success");
+                return true;
+            }else{
+                alert("Failed");
+                return true;
+            } */
+
+            /*if(userNameValue.length > 0){
+                alert("Success");
+                return true;
+            }else{
+                alert("Failed");
+                return true;
+            }*/
+
+            if(!userNameValue){
+                alert("Failed!");
+                return false;
+            } else {
+                alert("Success!");
+                return true;
+            }
+        }
+    </script>    
+</body>
+</html>
