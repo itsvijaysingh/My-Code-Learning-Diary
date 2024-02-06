@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Bar</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body>
+    <h1 class="text-center">Progress Bars</h1>
+    <hr class="bg-warning">
+    <div class="container">
+        <h2>Normal</h2>
+        <div class="progress" role="progressbar">
+            <div class="progress-bar" style="width: 25%;"></div>
+        </div>
+        <div class="progress mt-2">
+            <div class="progress-bar text-bg-dark" style="width: 50%"></div>
+        </div>
+        <div class="progress mt-2">
+            <div class="progress-bar text-bg-warning" style="width: 75%;"></div>
+        </div>
+        <div class="progress mt-2">
+            <div class="progress-bar text-bg-success" style="width: 100%;"></div>
+        </div>
+    </div>
+    <div class="container mt-3">
+        <h2>With Count /Label</h2>
+        <div class="progress">
+            <div class="progress-bar text-bg-danger" style="width: 25%;">25%</div>
+        </div>
+        <div class="progress mt-2">
+            <div class="progress-bar text-bg-warning" style="width: 50%;">50%</div>
+        </div>
+        <div class="progress mt-2">
+            <div class="progress-bar text-bg-dark" style="width: 75%">75%</div>
+        </div>
+        <div class="progress mt-2">
+            <div class="progress-bar text-bg-success" style="width: 100%;">100%</div>
+        </div>
+    </div>
+    <div class="container mt-3">
+        <h2>Stacked (Group)</h2>
+        <div class="progress-stacked">
+            <div class="progress" style="width: 25%;" role="progressbar">
+                <div class="progress-bar text-bg-danger">25%</div>
+            </div>
+            <div class="progress" style="width: 25%;" role="progressbar" >
+                <div class="progress-bar text-bg-warning">25%</div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-3">
+        <h2>Normal (Group)</h2>
+        <div class="progress">
+            <div class="progress-bar text-bg-danger" style="width: 25%;">25%</div>
+            <div class="progress-bar text-bg-warning" style="width: 25%;">50%</div>
+            <div class="progress-bar text-bg-dark" style="width: 25%;">75%</div>
+            <div class="progress-bar text-bg-success" style="width: 25%;">100%</div>
+        </div>
+    </div>
+    <div class="container mt-3">
+        <h2>Striped</h2>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped text-bg-danger" style="width: 25%;">25%</div>
+        </div>
+        <div class="progress mt-2">
+            <div class="progress-bar progress-bar-striped text-bg-warning" style="width: 50%;">50%</div>
+        </div>
+        <div class="progress mt-2">
+            <div class="progress-bar progress-bar-striped text-bg-dark" style="width: 75%">75%</div>
+        </div>
+        <div class="progress mt-2">
+            <div class="progress-bar progress-bar-striped text-bg-success" style="width: 100%">100%</div>
+        </div>
+    </div>
+    <div class="container mt-3">
+        <h2>Animated</h2>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated text-bg-danger" style="width:25%">25%</div>
+        </div>
+        <div class="progress mt-2">
+            <div class="progress-bar progress-bar-striped progress-bar-animted text-bg-warning" style="width: 50%;">50%</div>
+        </div>
+        <div class="progress mt-2">
+            <div class="progress-bar progress-bar-striped progress-bar-animated text-bg-info" style="width: 75%;">75%</div>
+        </div>
+        <div class="progress mt-2">
+            <div class="progress-bar progress-bar-striped progress-bar-animated text-bg-success" style="width: 100%;">100%</div>
+        </div>
+    </div>
+    <script src="bootstrap.min.js"></script>
+</body>
+</html>
