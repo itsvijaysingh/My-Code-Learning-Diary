@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Form Validation</title>
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="container d-flex justify-content-center align-items-center mt-5">
+            <form id="testForm" class="border border-dark-subtle p-3 col-lg-6 col-sm-12 col-md-12" onsubmit="return validateForm()">
+                <h1>Get Started</h1>
+                <div class="mb-2">
+                    <label class="form-label">Username</label>
+                    <div class="input-group usernameInputGroup">
+                        <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                          </svg></span>
+                        <input type="text" name="username" placeholder="Enter Username" class="form-control" value="" onchange="validateUsername()">
+                        <span class="input-group-text usernameValidationStatus d-none"></span>
+                    </div>
+                    <div class="form-text usernameValidationError"></div>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">Email</label>
+                    <div class="input-group emailInputGroup"> <!-- Added class for email input group -->
+                        <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/>
+                          </svg></span>
+                        <input type="email" name="email" placeholder="abc@gmail.com" class="form-control" value="" onchange="validateEmail()">
+                        <span class="input-group-text emailValidationStatus d-none"></span>
+                    </div>
+                    <div class="form-text emailValidationError"></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <div class="input-group passwordInputGroup"> <!-- Added class for password input group -->
+                        <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
+                            <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2M2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                        </svg></span>
+                        <input type="password" name="password" placeholder="Enter password" class="form-control" value="" onchange="validatePassword()">
+                        <span class="input-group-text passwordValidationStatus d-none"></span>
+                    </div>
+                    <div class="form-text passwordValidationError"></div>
+                </div>
+                <div class="mb-2">
+                    <button class="btn btn-primary w-100">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script>
+
+    let form = document.getElementById('testForm');
+
+
+    //function to check it an text have an special character or number
+    function checkSpecialAndNum(value) {
+        let checkSpecial = 0;
+        let checkNum = 0;
+        for (let i = 0; i < value.length; i++) {
+            if (value[i].charCodeAt() >= 33 && value[i].charCodeAt() <= 47 || value[i].charCodeAt() >= 58 && value[i].charCodeAt() <= 64 || value[i].charCodeAt() >= 91 && value[i].charCodeAt() <= 96 || value[i].charCodeAt() >= 123 && value[i].charCodeAt() <= 126) {
+                checkSpecial++;
+            } else if (value[i].charCodeAt() >= 48 && value[i].charCodeAt() <= 57) {
+                checkNum++;
+            }
+        }
+        if (checkSpecial > 0 && checkNum > 0) {
+            console.log("Includes special character and number");
+            return true;
+        } else {
+                console.log("Does not include special character or number");
+                return false;
+        }
+    }
+
+
+    //validate username
+    function validateUsername(){
+        let usernameInputGroup = document.querySelector(".usernameInputGroup");
+        let usernameValidationStatus = document.querySelector(".usernameValidationStatus");
+        let usernameValidationError = document.querySelector(".usernameValidationError");
+        if(form.username.value == ""){
+            usernameValidationStatus.innerText = '!';
+            usernameValidationStatus.classList.remove("d-none");
+            usernameInputGroup.classList.add("border", "border-2", "border-danger", "rounded-start", "rounded-end");
+            usernameValidationError.innerHTML = '<span class="text-danger">*Username Can not be blank</span>';
+            return false;
+        } else if(form.username.value.length < 8 || form.username.value.length > 12){
+            usernameValidationStatus.innerText = '!';
+            usernameValidationStatus.classList.remove("d-none");
+            usernameInputGroup.classList.add("border", "border-2", "border-danger", "rounded-start", "rounded-end");
+            usernameValidationError.innerHTML = '<span class="text-danger">*Username should be between 8 to 12 length</span>';
+            return false; 
+        }else{
+            usernameValidationStatus.innerText = ': )';
+            usernameValidationStatus.classList.remove("d-none");
+            usernameInputGroup.classList.remove("border-danger");
+            usernameInputGroup.classList.add("border", "border-2", "border-success", "rounded-start", "rounded-end");
+            usernameValidationError.innerHTML = '';
+            return true;
+        }
+    }
+
+
+    //validate email
+    function validateEmail(){
+        let emailValidationStatus = document.querySelector(".emailValidationStatus");
+        let emailInputGroup = document.querySelector(".emailInputGroup");
+        let emailValidationError = document.querySelector(".emailValidationError");
+        if(form.email.value == ""){
+            emailValidationStatus.innerText = '!';
+            emailValidationStatus.classList.remove("d-none");
+            emailInputGroup.classList.add("border", "border-2", "border-danger", "rounded-start", "rounded-end");
+            emailValidationError.innerHTML = '<span class="text-danger">*Email Can not be blank</span>';
+            return false;
+        } else if (form.email.value.indexOf('@') < 0 || form.email.value.indexOf('.') < 0) {
+            emailValidationStatus.innerText = '!';
+            emailValidationStatus.classList.remove("d-none");
+            emailInputGroup.classList.add("border", "border-2", "border-danger", "rounded-start", "rounded-end");
+            emailValidationError.innerHTML = '<span class="text-danger">*Must include @ and . email (Ex: abc@gmail.com)</span>';
+            return false;
+        } else if (form.email.value.indexOf('@') < 1 || form.email.value.indexOf('.') < form.email.value.indexOf('@') + 1) {
+            emailValidationStatus.innerText = '!';
+            emailValidationStatus.classList.remove("d-none");
+            emailInputGroup.classList.add("border", "border-2", "border-danger", "rounded-start", "rounded-end");
+            emailValidationError.innerHTML = '<span class="text-danger">*Enter valid email (Ex: abc@gmail.com)</span>';
+            return false;
+        } else if(form.email.value.length < 6){
+            emailValidationStatus.innerText = '!';
+            emailValidationStatus.classList.remove("d-none");
+            emailInputGroup.classList.add("border", "border-2", "border-danger", "rounded-start", "rounded-end");
+            emailValidationError.innerHTML = '<span class="text-danger">*Email should be greater than 5 characters</span>';
+            return false;
+        }else{
+            emailValidationStatus.innerText = ': )';
+            emailValidationStatus.classList.remove("d-none");
+            emailInputGroup.classList.remove("border-danger");
+            emailInputGroup.classList.add("border", "border-2", "border-success", "rounded-start", "rounded-end");
+            emailValidationError.innerHTML = '';
+            return true;
+        }
+    }
+
+
+    //validate password
+    function validatePassword(){
+        let passwordValidationStatus = document.querySelector(".passwordValidationStatus");
+        let passwordInputGroup = document.querySelector(".passwordInputGroup");
+        let passwordValidationError = document.querySelector(".passwordValidationError");
+        console.log(form.password.value.charCodeAt(0));
+        if(form.password.value == ""){
+            passwordValidationStatus.innerText = '!';
+            passwordValidationStatus.classList.remove("d-none");
+            passwordInputGroup.classList.add("border", "border-2", "border-danger", "rounded-start", "rounded-end");
+            passwordValidationError.innerHTML = '<span class="text-danger">*Password Can not be blank</span>';
+            return false;
+        } else if(form.password.value.charCodeAt(0) < 65 || form.password.value.charCodeAt(0) > 90){
+            passwordValidationStatus.innerText = '!';
+            passwordValidationStatus.classList.remove("d-none");
+            passwordInputGroup.classList.add("border", "border-2", "border-danger", "rounded-start", "rounded-end");
+            passwordValidationError.innerHTML = '<span class="text-danger">*First character must be an uppercase letter(Abc@123)</span>';
+            return false;
+        } else if(form.password.value.length < 8 || form.password.value.length > 12){
+            passwordValidationStatus.innerText = '!';
+            passwordValidationStatus.classList.remove("d-none");
+            passwordInputGroup.classList.add("border", "border-2", "border-danger", "rounded-start", "rounded-end");
+            passwordValidationError.innerHTML = '<span class="text-danger">*Password should be between 8 to 12 length</span>';
+            return false;
+        } else if(!checkSpecialAndNum(form.password.value)){
+            passwordValidationStatus.innerText = '!';
+            passwordValidationStatus.classList.remove("d-none");
+            passwordInputGroup.classList.add("border", "border-2", "border-danger", "rounded-start", "rounded-end");
+            passwordValidationError.innerHTML = '<span class="text-danger">*Must contain an special character and number</span>';
+            return false;  
+        }else{
+            passwordValidationStatus.innerText = ': )';
+            passwordValidationStatus.classList.remove("d-none");
+            passwordInputGroup.classList.remove("border-danger");
+            passwordInputGroup.classList.add("border", "border-2", "border-success", "rounded-start", "rounded-end");
+            passwordValidationError.innerHTML = '';
+            return true;
+        }
+    }
+
+
+    //validate form on submission
+    function validateForm(){
+        console.log("entered in validate form");
+        if(validateUsername() && validateEmail() && validatePassword()){
+            console.log("Form validated successfully");
+            return true;
+        } else {
+            console.log("Form validation failed");
+            return false;
+        }
+    }
+    </script>
+</body>
+</html>
