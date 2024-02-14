@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Assignment</title>
+
+     <!--Bootstrap CSS-->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <h1 align="center">Object Assignment</h1>
+    <hr>
+    <script>
+        let employeeData = {
+            companyName: "Tech Solutions India Pvt. Ltd.",
+            companyAddress: "21 Tech Park",
+            companyCity: "Bangalore",
+            companyState: "Karnataka",
+            companyCountry: "India",
+            employee1: {
+                id: 1,
+                name: "Ravi Kumar",
+                gender: "Male",
+                address: ["45 MG Road", "Bangalore", "Karnataka"]
+            },
+            employee2: {
+                id: 2,
+                name: "Komal Dubey",
+                gender: "Female",
+                address: ["789 Oak Avenue", "Jaipur", "Rajasthan"]
+            },
+            employee3: {
+                id: 3,
+                name: "Anil Gupta",
+                gender: "Male",
+                address: ["12 Indiranagar", "Bangalore", "Karnataka"]
+            },
+            employee4: {
+                id: 4,
+                name: "Komal Vaishnav",
+                gender: "Female",
+                address: ["222 Maple Drive", "Jodhpur", "Rajasthan"]
+            },
+            employee5: {
+                id: 5,
+                name: "Amit Singh",
+                gender: "Male",
+                address: ["56 Whitefield", "Bangalore", "Karnataka"]
+            },
+            employee6: {
+                id: 6,
+                name: "Ravi Rathore",
+                gender: "Male",
+                address: ["444 Walnut Court", "Bikaner", "Rajasthan"]
+            }
+        };
+
+        document.write('<div class="container-fluid">');
+            document.write('<div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 justify-content-center g-2">');
+                let count = 1;
+                for (let key in employeeData) {
+                    if(key === `employee${count}`){
+                        document.write('<div class="col">');
+                            //console.log(employeeData[key]);
+                            document.write('<div class="card">');
+                                document.write(`<div class="card-header text-center">Employee Detail: <span class="badge bg-dark rounded-pill">${count}</span></div>`);
+                                document.write('<div class="card-body">');
+                                    document.write(`<ul class="list-group list-group-item-dark mb-3"><div class="list-group-item text-center fw-bold">Employee Name: ${employeeData[key].name}</div></ul>`);
+                                    document.write(`
+                                        <ul class="list-group">
+                                            <li class="list-group-item"><b>Employee Id:</b> ${employeeData[key].id}</li>
+                                            <li class="list-group-item"><b>Employee Gender:</b> ${employeeData[key].gender}</li>
+                                            <li class="list-group-item"><b>Employee Address:</b> ${employeeData[key].address}</li>
+                                            <li class="list-group-item"><b>Employee Country:</b> ${employeeData.companyCountry}</li> 
+                                        </ul>
+                                    `);
+                                document.write('</div>');  
+                                document.write(`
+                                    <div class="card-footer text-center">
+                                        [${employeeData.companyAddress}]
+                                        </br>
+                                        [${employeeData.companyCity}, ${employeeData.companyState}, ${employeeData.companyCountry}]
+                                    </div>
+                                `);
+                            document.write('</div>');  
+                            count++;
+                        document.write('</div>');
+                    }
+                }
+            document.write('</div>');
+        document.write('</div>');
+
+    </script>
+</body>
+</html>
