@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>...Arrays Assignment</title>
+
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+<body>
+    <script>
+        
+        // prodcut label
+        let productLabel = ["Product Code :", "Product Name :", "Product Quantity :", "Product Price :"]
+
+        // Product 1 Data
+        let product1 = [1001, 'Shirt', 3, 249];
+
+        // Product 2 Data
+        let product2 = [1002, 'Pants', 5, 399];
+
+        // Product 3 Data
+        let product3 = [1003, 'Shoes', 1, 499];
+
+        // Product 4 Data
+        let product4 = [1004, 'Dress', 2, 699];
+
+        // Product 5 Data
+        let product5 = [1005, 'Jacket', 1, 999];
+
+
+        // Function to catch all arrays as 2d array
+        function multiArrays(...arrays) {
+            //console.log(arrays);
+            return arrays;
+        }
+
+        // All Products Data (passed all array to add in one array)
+        let allProducts = multiArrays(product1, product2, product3, product4);
+        console.log(allProducts);
+
+        // shortcut function for document writing
+        let Doc = (...args) => document.write(`${args}`);
+
+
+        Doc(`<h3 class="text-center pt-2">Directly accesses elements of allProducts using indices, assuming they are arrays:</h3>`);
+        Doc(`<hr>`);
+        Doc(`<div class="container-fluid">`);
+            Doc(`<div class="row row-col-1 row-cols-lg-4 row-cols-md-2 row-cols-sm-1 g-2 justify-content-center">`);
+                for(let product in allProducts){
+                    //console.log("Product Row: " + product);
+                    if(product){  // checks if an product details have or not
+                        Doc(`<div class="col">`);
+                            Doc(`<ul class="list-group">`);
+                                Doc(`<li class="list-group-item list-group-item-success text-center">Product <span class="badge text-bg-success rounded-pill">${parseInt(product) + 1}</li>`);
+                                for(let i in allProducts[product]){
+                                    //console.log("Product Value: " + productValue);
+                                    Doc(`<li class="list-group-item">${productLabel[i]} ${allProducts[product][i]}</li>`);
+                                }
+                                Doc(`<li class="list-group-item list-group-item-success">Total Amount : ${parseInt(allProducts[product][3]) * allProducts[product][2]}</li>`);
+                            Doc(`</ul>`);
+                        Doc(`</div>`);
+                    }
+                }
+            Doc(`</div>`);
+        Doc(`</div>`);
+
+
+        //function to spread array
+        function spreadArray(...array){
+            //console.log("Spreaded Array: " + array);
+            return array;
+        }
+
+        Doc(`<h3 class="text-center pt-2">First spreads each array element using the spread operator before processing/printing the data:</h3>`);
+        Doc(`<hr>`);
+        Doc(`<div class="container-fluid">`);
+            Doc(`<div class="row row-col-1 row-cols-lg-4 row-cols-md-2 row-cols-sm-1 g-2 justify-content-center">`);
+                for(let product in allProducts){
+                    if(product){
+                        let productArray = spreadArray(...allProducts[product]);
+                        Doc(`<div class="col">`);
+                            Doc(`<ul class="list-group">`);
+                                Doc(`<li class="list-group-item list-group-item-success text-center">Product <span class="badge text-bg-success rounded-pill">${parseInt(product) + 1}</li>`);
+                                for(let i in productArray){
+                                    Doc(`<li class="list-group-item">${productLabel[i]} ${productArray[i]}</li>`);
+                                }
+                                Doc(`<li class="list-group-item list-group-item-success">Total Amount : ${parseInt(productArray[3]) * productArray[2]}</li>`);
+                            Doc(`</ul>`);
+                        Doc(`</div>`);
+                    }
+                }
+            Doc(`</div>`);
+        Doc(`</div>`);
+
+    </script>
+</body>
+</html>
